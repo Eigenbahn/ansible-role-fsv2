@@ -1,0 +1,11 @@
+---
+# tasks file for eigenbahn.fsv2
+
+- name: fsv2 | installed?
+  shell: command -v {{ fsv2_bin_name }} >/dev/null 2>&1
+  register: fsv2_is_installed
+  ignore_errors: yes
+  changed_when: False
+
+- when: fsv2_is_installed.rc != 0 or fsv2_force_reinstall
+  include: install.yml

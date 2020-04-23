@@ -1,0 +1,39 @@
+---
+# tasks/install file for eigenbahn.fsv2
+
+- name: fsv2 | deps
+  apt:
+    name:
+      - libgtkgl2.0-dev
+      - libgl1-mesa-dev
+      - libglu1-mesa-dev
+
+- name: fsv2 | get src
+  git:
+    repo: '{{ fsv2_git_repo }}'
+    dest: '{{ fsv2_temp_folder }}/fsv2'
+
+- name: fsv2 | configure
+  command: >
+    '{{ item }}'
+  args:
+    chdir: '{{ fsv2_temp_folder }}/fsv2'
+  loop:
+    - ./autogen.sh
+    - ./configure
+
+- name: fsv2 | build
+  make:
+    chdir: '{{ fsv2_temp_folder }}/fsv2'
+
+- name: fsv2 | install
+  copy:
+    remote_src: yes
+    src: '{{ fsv2_temp_folder }}/fsv2/src/fsv'
+    dest: '{{ fsv2_install_folder }}/{{ fsv2_bin_name }}'
+    mode: 0755
+
+- name: fsv2 | remove src
+  file:
+    path: '{{ fsv2_temp_folder }}/fsv2'
+    state: absent

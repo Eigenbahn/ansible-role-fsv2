@@ -1,0 +1,9 @@
+---
+# defaults file for eigenbahn.fsv2
+
+fsv2_force_reinstall: no
+
+fsv2_bin_name: fsv2
+fsv2_install_folder: /usr/local/bin
+
+fsv2_temp_folder: /tmp
