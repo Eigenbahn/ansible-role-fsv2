@@ -9,6 +9,7 @@ Basically, it's a 3D file explorer aimed to remproduce the one seen in the famou
   <img src="http://fsv.sourceforge.net/screenshots/06.png">
 </p>
 
+
 Requirements
 ------------
 
@@ -27,24 +28,26 @@ Please note that the role has a mechanism to not skip all tasks if the binary `{
 
 If for any reason you'd like to re-install it (e.g. due to upstream changes in the code) you can force the reinstallation by setting var `fsv2_force_reinstall` to `yes`.
 
+
 Dependencies
 ------------
 
 None.
 
+
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
          - { role: eigenbahn.fsv2 }
 
+
 License
 -------
 
 MIT
+
 
 Author Information
 ------------------
